@@ -12,8 +12,11 @@ Projeto desenvolvido como prática de desenvolvimento front-end utilizando HTML,
 
 Criar uma interface alternativa para a Mix Conveniência, focando em organização visual e responsividade.
 
-## 👩‍💻 Autora
+## 👩‍💻 Autores
 
-Berta Araujo
-
+Beatriz
+Fernanda 
+Gabriela
+Luiz
+Thaisse
 
