@@ -1,365 +1,307 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Cadastro - Mix Conveniência</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        font-family:
-          system-ui,
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          Roboto,
-          Oxygen,
-          Ubuntu,
-          Cantarell,
-          "Open Sans",
-          "Helvetica Neue",
-          sans-serif;
-        background-image: url("images/background-pattern.png");
-      }
+  <title>Cadastro - Mix Conveniência</title>
 
-      .container {
-        width: 1000px;
-        margin: auto;
-        background: white;
-        padding: 20px;
-        border-radius: 5px;
-      }
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-      .row {
-        display: flex;
-        gap: 10px;
-        margin-top: 10px;
-      }
+  <style>
+    body {
+      font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        "Open Sans",
+        "Helvetica Neue",
+        sans-serif;
+      background-image: url("images/background-pattern.png");
+    }
 
-      .col {
-        flex: 1;
-      }
+    .container {
+      width: 1000px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 5px;
+    }
 
-      .col-2 {
-        flex: 2;
-      }
+    .row {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
 
-      label {
-        font-size: 13px;
-        display: block;
-      }
+    .col {
+      flex: 1;
+    }
 
-      input,
-      select {
-        width: 100%;
-        padding: 6px;
-        margin-top: 3px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-      }
+    .col-2 {
+      flex: 2;
+    }
 
-      .section {
-        background: #013a8c;
-        padding: 10px;
-        margin-top: 20px;
-        font-weight: bold;
-        border-radius: 4px;
-        color: white;
-      }
+    label {
+      font-size: 13px;
+      display: block;
+    }
 
-      .cadastro {
-        text-align: center;
-        font-weight: bold;
-        font-size: 28px;
-        color: #013a8c;
-        margin-bottom: 15px;
-        text-transform: uppercase;
-      }
-    </style>
-    
-  </head>
+    input,
+    select {
+      width: 100%;
+      padding: 6px;
+      margin-top: 3px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
 
-  <body class="bg-light">
-    <div class="container">
-      <!-- LOGO -->
-      <div class="text-center mb-4">
-        <a href="index.html">
-          <img
-            src="images/mixsemfundo.png"
-            width="150"
-            class="rounded"
-            alt="logo"
-          />
-        </a>
+    .section {
+      background: #013a8c;
+      padding: 10px;
+      margin-top: 20px;
+      font-weight: bold;
+      border-radius: 4px;
+      color: white;
+    }
+
+    .cadastro {
+      text-align: center;
+      font-weight: bold;
+      font-size: 28px;
+      color: #013a8c;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+
+<body class="bg-light">
+  <div class="container">
+    <!-- LOGO -->
+    <div class="text-center mb-4">
+      <a href="index.html">
+        <img src="images/mixsemfundo.png" width="150" class="rounded" alt="logo" />
+      </a>
+    </div>
+
+    <hr />
+
+    <div class="cadastro">Cadastre-se</div>
+
+
+    <form action="sucesso.html" method="POST" id="formCadastro" novalidate>
+
+      <div class="section">Dados de Login</div>
+
+      <div class="row">
+        <div class="col">
+          <label class="fw-bold" for="iCPF">CPF</label>
+          <input type="text" id="iCPF" class="form-control" placeholder="999.999.999-99" onkeypress="mCpf(this)"
+            maxlength="14" onblur="validarCPF(this)" required />
+          <div class="invalid-feedback">
+            CPF inválido.
+          </div>
+        </div>
+
+        <div class="col">
+          <label>Nome de Usuário</label>
+          <input type="text" id="tx_nome" class="form-control" name="usuario" placeholder="Digite seu nome de usuário"
+            onblur="validarNome()" required />
+        </div>
       </div>
 
-      <hr />
-
-      <div class="cadastro">Cadastre-se</div>
-
-    
-      <form action="sucesso.html" method="POST">
-        
-        <div class="section">Dados de Login</div>
-
-        <div class="row">
-          <div class="col">
-            <label class="fw-bold">CPF</label>
-            <input
-              type="text"
-              class="form-control"
-              name="cpf"
-              placeholder="000.000.000-00"
-            />
-          </div>
-
-          <div class="col">
-            <label>Nome de Usuário</label>
-            <input
-              type="text"
-              class="form-control"
-              name="usuario"
-              placeholder="Digite seu nome de usuário"
-            />
+      <div class="row">
+        <div class="col">
+          <label>E-mail</label>
+          <input id="tx_email" type="email" class="form-control" name="email" placeholder="usuario@email.com"
+            onblur="validarEmail()" required />
+          <div class="invalid-feedback">
+            Digite um e-mail válido.
           </div>
         </div>
 
-        <div class="row">
-          <div class="col">
-            <label>E-mail</label>
-            <input
-              type="email"
-              class="form-control"
-              name="email"
-              placeholder="usuario@email.com"
-            />
-          </div>
-
-          <div class="col">
-            <label>Confirmar E-mail</label>
-            <input
-              type="email"
-              class="form-control"
-              name="confirmar_email"
-              placeholder="usuario@email.com"
-            />
-          </div>
-
-          <div class="col">
-            <label>Senha</label>
-            <input
-              type="password"
-              class="form-control"
-              name="senha"
-              placeholder="8 a 15 dígitos"
-            />
-          </div>
-
-          <div class="col">
-            <label>Confirmar Senha</label>
-            <input
-              type="password"
-              class="form-control"
-              name="confirmar_senha"
-              placeholder="Repita a senha"
-            />
+        <div class="col">
+          <label>Confirmar E-mail</label>
+          <input type="email" id="confirmar_email" class="form-control" name="confirmar_email"
+            placeholder="usuario@email.com" onblur="validarConfirmacaoEmail()" required />
+          <div class="invalid-feedback">
+            Os e-mails não coincidem.
           </div>
         </div>
 
-        
-        <div class="section">Dados de Contato</div>
-
-        <div class="row">
-          <div class="col">
-            <label>Nome</label>
-            <input
-              type="text"
-              class="form-control"
-              name="nome"
-              placeholder="Digite seu nome"
-            />
-          </div>
-
-          <div class="col">
-            <label>Sobrenome</label>
-            <input
-              type="text"
-              class="form-control"
-              name="sobrenome"
-              placeholder="Digite seu sobrenome"
-            />
+        <div class="col">
+          <label>Senha</label>
+          <input type="password" id="senha" class="form-control" name="senha" placeholder="8 a 15 dígitos"
+            onblur="validarSenha()" required />
+          <div class="invalid-feedback">
+            A senha deve possuir entre 8 e 15 caracteres.
           </div>
         </div>
 
-        <div class="row">
-          <div class="col">
-            <label>Data de Nascimento</label>
-            <input type="date" class="form-control" name="dataNascimento" />
-          </div>
+        <div class="col">
+          <label>Confirmar Senha</label>
+          <input type="password" id="confirmar_senha" class="form-control" name="confirmar_senha"
+            placeholder="Repita a senha" onblur="validarConfirmacaoSenha()" required />
 
-          <div class="col">
-            <label>RG</label>
-            <input
-              type="text"
-              class="form-control"
-              name="rg"
-              placeholder="Digite seu RG"
-            />
+          <div class="invalid-feedback">
+            As senhas não coincidem.
           </div>
+        </div>
+      </div>
 
-          <div class="col">
-            <label>Sexo</label>
-            <select class="form-control" name="sexo">
-              <option>Selecione</option>
-              <option>Feminino</option>
-              <option>Masculino</option>
-              <option>Não Informar</option>
-            </select>
+      <div class="section">Dados de Contato</div>
+
+      <div class="row">
+        <div class="col">
+          <label>Nome</label>
+          <input type="text" class="form-control" name="nome" placeholder="Digite seu nome" required />
+        </div>
+
+        <div class="col">
+          <label>Sobrenome</label>
+          <input type="text" class="form-control" name="sobrenome" placeholder="Digite seu sobrenome" required />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label>Data de Nascimento</label>
+          <input type="date" id="dataNascimento" class="form-control" name="dataNascimento" onblur="validarData()"
+            required />
+          <div class="invalid-feedback">
+            É necessário ser maior de 18 anos.
           </div>
         </div>
 
-    
-        <div class="row">
-          <div class="col">
-            <label>CEP</label>
-            <input
-              type="text"
-              class="form-control"
-              name="cep"
-              placeholder="Digite seu CEP"
-            />
-          </div>
-
-          <div class="col-2">
-            <label>Endereço</label>
-            <input
-              type="text"
-              class="form-control"
-              name="endereco"
-              placeholder="Digite seu endereço completo"
-            />
-          </div>
-
-          <div class="col">
-            <label>Número</label>
-            <input
-              type="text"
-              class="form-control"
-              name="numero"
-              placeholder="Nº da residência"
-            />
+        <div class="col">
+          <label>RG</label>
+          <input type="text" class="form-control" name="rg" placeholder="Digite seu RG" onkeyup="mRG(this)"
+            maxlength="12" onblur="validarRG()" required />
+          <div class="invalid-feedback">
+            Digite um RG válido.
           </div>
         </div>
 
-        <div class="row">
-          <div class="col">
-            <label>Bairro</label>
-            <input
-              type="text"
-              class="form-control"
-              name="bairro"
-              placeholder="Digite seu bairro"
-            />
-          </div>
+        <div class="col">
+          <label>Sexo</label>
+          <select class="form-control" name="sexo">
+            <option>Selecione</option>
+            <option>Feminino</option>
+            <option>Masculino</option>
+            <option>Não Informar</option>
+          </select>
+        </div>
+      </div>
 
-          <div class="col">
-            <label>Complemento</label>
-            <input
-              type="text"
-              class="form-control"
-              name="complemento"
-              placeholder="Complemento"
-            />
-          </div>
 
-          <div class="col">
-            <label>Cidade</label>
-            <input
-              type="text"
-              class="form-control"
-              name="cidade"
-              placeholder="Digite sua cidade"
-            />
-          </div>
+      <div class="row">
+        <div class="col">
+          <label>CEP</label>
+          <input type="text" class="form-control" name="cep" placeholder="Digite seu CEP" />
         </div>
 
-        <div class="row">
-          <div class="col">
-            <label>Estado</label>
-            <select class="form-control" name="estado">
-              <option>Selecione</option>
-              <option>AC</option>
-              <option>AL</option>
-              <option>AP</option>
-              <option>AM</option>
-              <option>BA</option>
-              <option>CE</option>
-              <option>DF</option>
-              <option>ES</option>
-              <option>GO</option>
-              <option>MA</option>
-              <option>MT</option>
-              <option>MS</option>
-              <option>MG</option>
-              <option>PA</option>
-              <option>PB</option>
-              <option>PR</option>
-              <option>PE</option>
-              <option>PI</option>
-              <option>RJ</option>
-              <option>RN</option>
-              <option>RS</option>
-              <option>RO</option>
-              <option>RR</option>
-              <option>SC</option>
-              <option>SP</option>
-              <option>SE</option>
-              <option>TO</option>
-            </select>
-          </div>
-
-          <div class="col">
-            <label>Telefone</label>
-            <input
-              type="tel"
-              class="form-control"
-              name="telefone"
-              placeholder="(DDD) Telefone"
-            />
-          </div>
-
-          <div class="col">
-            <label>Celular</label>
-            <input
-              type="tel"
-              class="form-control"
-              name="celular"
-              placeholder="(DDD) Celular"
-            />
-          </div>
+        <div class="col-2">
+          <label>Endereço</label>
+          <input type="text" class="form-control" id="endereco" name="endereco"
+            placeholder="Digite seu endereço completo" required />
         </div>
 
-        <div class="d-flex justify-content-end mt-4">
-          <button
-            type="submit"
-            class="btn text-white"
-            style="background: #013a8c"
-          >
-            Cadastrar
-          </button>
+        <div class="col">
+          <label>Número</label>
+          <input type="text" class="form-control" name="numero" placeholder="Nº da residência" required />
         </div>
-      </form>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label>Bairro</label>
+          <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Digite seu bairro" required />
+        </div>
+
+        <div class="col">
+          <label>Complemento</label>
+          <input type="text" class="form-control" name="complemento" placeholder="Complemento" />
+        </div>
+
+        <div class="col">
+          <label>Cidade</label>
+          <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Digite sua cidade" required />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label>Estado</label>
+          <select class="form-control" name="estado" id="estado">
+            <option>Selecione</option>
+            <option>AC</option>
+            <option>AL</option>
+            <option>AP</option>
+            <option>AM</option>
+            <option>BA</option>
+            <option>CE</option>
+            <option>DF</option>
+            <option>ES</option>
+            <option>GO</option>
+            <option>MA</option>
+            <option>MT</option>
+            <option>MS</option>
+            <option>MG</option>
+            <option>PA</option>
+            <option>PB</option>
+            <option>PR</option>
+            <option>PE</option>
+            <option>PI</option>
+            <option>RJ</option>
+            <option>RN</option>
+            <option>RS</option>
+            <option>RO</option>
+            <option>RR</option>
+            <option>SC</option>
+            <option>SP</option>
+            <option>SE</option>
+            <option>TO</option>
+          </select>
+        </div>
+
+        <div class="col">
+          <label>Telefone</label>
+          <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="(99) 9999-9999"
+            maxlength="14" onkeyup="mTel(this)" />
+        </div>
+
+        <div class="col">
+          <label>Celular</label>
+          <input type="tel" class="form-control" id="celular" name="celular" placeholder="(99) 99999-9999"
+            maxlength="15" onkeyup="mCel(this)" required />
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end mt-4">
+        <button type="submit" class="btn text-white" style="background: #013a8c">
+          Cadastrar
+        </button>
+      </div>
+    </form>
+  </div>
+  <div id="footer-bottom">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 copyright">
+          <p>© Mix Conveniência. Todos os direitos reservados. </p>
+        </div>
+      </div>
     </div>
-    <div id="footer-bottom">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6 copyright">
-            <p>© Mix Conveniência. Todos os direitos reservados. </p>
-          </div>
-  </body>
+  </div>
+
+  <script src="js/mascaras-valida.js"></script>
+</body>
+
 </html>
